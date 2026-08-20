@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kofi</title>
-  <link rel="shortcut icon" href="/favicon-kofi.svg" type="image/svg">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="shortcut icon" href="assets/icons/favicon-kofi.svg" type="image/svg">
+  <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -16,8 +16,156 @@
  <div id="header-placeholder"></div>
   <main>
        <!-- conteúdo específico do menu.html continua aqui -->
+        <main>
+  <!-- Cabeçalho do Cardápio -->
+  <section class="menu-hero">
+    <h1>Nosso Cardápio</h1>
+    <p>Escolha seus cafés e acompanhamentos favoritos</p>
+  </section>
+
+  <section class="container menu-section">
+    <!-- Filtros de Categoria -->
+    <div class="category-filters">
+      <button class="filter-btn active" data-category="todos">Todos</button>
+      <button class="filter-btn" data-category="quentes">Cafés Quentes</button>
+      <button class="filter-btn" data-category="gelados">Bebidas Geladas</button>
+      <button class="filter-btn" data-category="comidas">Comidas</button>
+      <button class="filter-btn" data-category="graos">Grãos em Pó/Grão</button>
+    </div>
+
+    <!-- Grid de Produtos -->
+    <div class="menu-grid">
+      <!-- Produto 1 -->
+      <article class="menu-card" data-category="quentes">
+        <div class="card-img">
+          <img src="assets/img/espresso.jpg" alt="Café Espresso">
+        </div>
+        <div class="card-info">
+          <h3>Espresso Duplo</h3>
+          <p>Extração concentrada com notas florais e acidez equilibrada.</p>
+          <div class="card-footer">
+            <span class="price">R$ 9,00</span>
+            <button class="btn-add"><i class="ph ph-plus"></i> Adicionar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 2 -->
+      <article class="menu-card" data-category="quentes">
+        <div class="card-img">
+          <img src="assets/img/cappuccino.jpg" alt="Cappuccino">
+        </div>
+        <div class="card-info">
+          <h3>Cappuccino Kofi</h3>
+          <p>Espresso, leite vaporizado e uma camada cremosa de microespuma.</p>
+          <div class="card-footer">
+            <span class="price">R$ 14,00</span>
+            <button class="btn-add"><i class="ph ph-plus"></i> Adicionar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 3 -->
+      <article class="menu-card" data-category="gelados">
+        <div class="card-img">
+          <img src="assets/img/iced-latte.jpg" alt="Iced Coffee">
+        </div>
+        <div class="card-info">
+          <h3>Iced Vanilla Latte</h3>
+          <p>Café gelado com leite, xarope natural de baunilha e gelo.</p>
+          <div class="card-footer">
+            <span class="price">R$ 16,00</span>
+            <button class="btn-add"><i class="ph ph-plus"></i> Adicionar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 4 -->
+      <article class="menu-card" data-category="comidas">
+        <div class="card-img">
+          <img src="assets/img/croissant.jpg" alt="Croissant">
+        </div>
+        <div class="card-info">
+          <h3>Croissant Folhado</h3>
+          <p>Receita tradicional francesa com manteiga artesanal.</p>
+          <div class="card-footer">
+            <span class="price">R$ 12,00</span>
+            <button class="btn-add"><i class="ph ph-plus"></i> Adicionar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 5 -->
+      <article class="menu-card" data-category="graos">
+        <div class="card-img">
+          <img src="assets/img/pacote-graos.jpg" alt="Pacote de Cafe em Graos">
+        </div>
+        <div class="card-info">
+          <h3>Pacote Kofi Single Origin 250g</h3>
+          <p>Grãos 100% Arábica selecionados, torra média artesanal.</p>
+          <div class="card-footer">
+            <span class="price">R$ 42,00</span>
+            <button class="btn-add"><i class="ph ph-plus"></i> Adicionar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
   </main>
   <div id="footer-placeholder"></div>
+  <!-- Pop-up Modal de Detalhes do Produto -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <button class="close-modal" id="close-modal" aria-label="Fechar Pop-up">&times;</button>
+    <div class="modal-body">
+      <div class="modal-img">
+        <img id="modal-img" src="" alt="Foto do Produto">
+      </div>
+      <div class="modal-details">
+        <h2 id="modal-title">Nome do Produto</h2>
+        <span id="modal-price" class="modal-price">R$ 0,00</span>
+        <p id="modal-desc">Descrição completa do produto aqui.</p>
+        
+        <div class="modal-options">
+          <label>Quantidade:</label>
+          <div class="qty-selector">
+            <button id="qty-minus">-</button>
+            <span id="qty-value">1</span>
+            <button id="qty-plus">+</button>
+          </div>
+        </div>
+
+        <button class="btn-confirm-add" id="btn-confirm-add">Adicionar ao Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fundo escuro (Backdrop) -->
+<div id="cart-overlay" class="cart-overlay"></div>
+
+<!-- Gaveta Lateral do Carrinho -->
+<aside id="cart-drawer" class="cart-drawer">
+  <div class="cart-header">
+    <h2>Seu Pedido</h2>
+    <button id="close-cart" class="close-cart-btn" aria-label="Fechar carrinho">&times;</button>
+  </div>
+
+  <!-- Lista de Itens do Carrinho -->
+  <div id="cart-items" class="cart-items">
+    <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+  </div>
+
+  <!-- Rodapé com Total e Checkout -->
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cart-total-price">R$ 0,00</span>
+    </div>
+    <button class="btn-checkout" id="btn-checkout">Finalizar Pedido</button>
+  </div>
+</aside>
+<script src="/js/script.js"></script>
   </body>
 
 </html>
