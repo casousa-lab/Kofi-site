@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: montserrat;
+  font-family: montserrat, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -24,10 +24,40 @@ p, h1, h2 {
 
 p {
   text-transform: none;
-  font-family: montserrat;
+  font-family: montserrat, sans-serif;
 }
 
 /* ===== HEADER ===== */
+#header-placeholder {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Linha branca */
+header.scrolled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+  background-color: white;
+
+  animation: linhaHeader 0.4s ease forwards;
+}
+
+@keyframes linhaHeader {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
 header {
   background-color: var(--preto);
   display: flex;
@@ -35,9 +65,6 @@ header {
   align-items: center;
   padding: 15px 5%;
 
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 header nav ul {
@@ -57,7 +84,6 @@ header nav a {
   letter-spacing: 1px;
   position: relative;
   padding-bottom: 4px;
-
   transition: color 0.3s ease;
 }
 
@@ -73,7 +99,6 @@ header nav a::after {
   bottom: 0;
   left: 0;
   background-color: var(--buff);
-
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
@@ -86,6 +111,18 @@ header nav a:hover::after {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.logo-icon {
+  display: none;
+}
+
+header.scrolled .logo-full {
+  display: none;
+}
+
+header.scrolled .logo-icon {
+  display: block;
 }
 
 .icon-link {
@@ -298,6 +335,7 @@ header nav a:hover::after {
     gap: 30px;
   }
 }
+
 /* ===== SEÇÃO DO CARDÁPIO ===== */
 .menu-hero {
   text-align: center;
@@ -330,127 +368,166 @@ header nav a:hover::after {
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  position: sticky;
+  top: 70px;
+  z-index: 900;
+  background-color: var(--branco);
+  padding: 15px 0;
 }
 
 .filter-btn {
-  background-color: transparent;
-  color: var(--preto);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 8px 0;
   font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--preto);
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: var(--buff);
-  color: var(--preto);
-  border-color: var(--buff);
-  font-weight: 600;
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 2px;
+
+  background-color: var(--chesnut);
+
+  transition: width 0.3s ease;
+}
+
+.filter-btn:hover::after,
+.filter-btn.active::after {
+  width: 100%;
 }
 
 /* GRID DE PRODUTOS */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 30px;
+  gap: 35px;
 }
 
-/* CARD DE PRODUTO */
+/* ===== CARD DE PRODUTO (ESTILO WATCHHOUSE / MINIMALISTA) ===== */
 .menu-card {
-  background-color: #121212;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .menu-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--brown-sugar);
+  transform: translateY(-4px);
 }
 
+/* Imagem proporcional 4:5 com efeito zoom */
 .card-img {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   background-color: #1a1a1a;
+  margin-bottom: 12px;
 }
 
 .card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .menu-card:hover .card-img img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
+/* Informações da bebida/comida */
 .card-info {
-  padding: 20px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .card-info h3 {
-  font-size: 1.1rem;
-  color: var(--branco);
+  font-size: 1.15rem;
+  color: var(--chesnut);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.2px;
 }
 
 .card-info p {
   font-size: 0.85rem;
-  color: #a0a0a0;
+  color:var(--preto);
   line-height: 1.4;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-grow: 1;
 }
 
+/* Rodapé com linha contínua sob o texto */
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: auto;
+
+  border-top: 1px solid var(--preto);
+  border-bottom: 1px solid var(--preto);
 }
 
 .price {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--buff);
+  color: var(--preto);
 }
 
+/* Botão estático com quadrado e sinal de + (sem nenhuma animação) */
 .btn-add {
-  background-color: var(--brown-sugar);
-  color: var(--branco);
+  background-color: rgba(7, 0, 0, 0.15);
+  color: var(--preto);
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-family: inherit;
-  font-weight: 600;
-  cursor: pointer;
+  width: 28px;
+  height: 28px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: background-color 0.2s ease;
+  justify-content: center;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0;
+  transition: none;
 }
 
-.btn-add:hover {
-  background-color: var(--chesnut);
+/* Oculta o ícone Phosphor do HTML */
+.btn-add .ph {
+  display: none;
 }
 
+/* Sinal de + centralizado estático */
+.btn-add::after {
+  content: "+";
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--preto);
+  line-height: 1;
+  transition: none;
+}
 /* Animação para esconder/mostrar produtos */
 .menu-card.hidden {
   display: none;
 }
+
 /* ===== POP-UP MODAL ===== */
 .modal {
   display: none;
@@ -613,8 +690,188 @@ header nav a:hover::after {
 .btn-confirm-add:hover {
   background-color: var(--chesnut);
 }
+/* ===== AJUSTES DE TAMANHO E SCROLL DO MODAL ===== */
+.modal-content {
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
 
-/* Responsivo para celular */
+.modal-details {
+  overflow-y: auto;
+  max-height: 80vh;
+  padding: 25px;
+}
+
+/* ===== GRUPOS DE OPÇÕES DO PRODUTO ===== */
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--buff);
+}
+
+.option-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== OPÇÕES DO PRODUTO - ESTILO REFERÊNCIA ===== */
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.option-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--preto);
+  text-transform: none;
+  letter-spacing: 0;
+
+  margin-bottom: 0;
+}
+
+/* Lista de opções */
+.option-choices {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+/* Cada opção */
+.option-pill {
+  width: 100%;
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid #999;
+  background-color: transparent;
+
+  transition: background-color 0.2s ease;
+}
+
+/* Checkbox */
+.option-pill input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 20px;
+  height: 20px;
+
+  margin: 0 10px 0 0;
+
+  border: 1px solid #999;
+  border-radius: 3px;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+/* Checkbox selecionado */
+.option-pill input:checked {
+  background-color: var(--preto);
+  border-color: var(--preto);
+
+  position: relative;
+}
+
+/* Check */
+.option-pill input:checked::after {
+  content: "✓";
+
+  position: absolute;
+
+  color: var(--branco);
+  font-size: 13px;
+  font-weight: 600;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+/* Texto da opção */
+.option-pill span {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0;
+
+  color: var(--preto);
+
+  border: none;
+  border-radius: 0;
+  background: transparent;
+
+  font-size: 0.95rem;
+  font-weight: 400;
+
+  transition: none;
+}
+
+/* Remove o efeito de "pill" */
+.option-pill:hover span {
+  color: var(--preto);
+  border: none;
+}
+
+/* Quando passar o mouse */
+.option-pill:hover {
+  background-color: var(--branco);
+}
+
+/* Selecionado */
+.option-pill input:checked + span {
+  background-color: transparent;
+  color: var(--preto);
+  border: none;
+  font-weight: 400;
+}
+/* Alinhamento da linha de quantidade */
+.qty-group {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
 @media (max-width: 600px) {
   .modal-body {
     grid-template-columns: 1fr;
@@ -624,6 +881,7 @@ header nav a:hover::after {
     max-height: 220px;
   }
 }
+
 /* ===== BADGE DO CARRINHO ===== */
 .cart-link {
   position: relative;
@@ -646,7 +904,6 @@ header nav a:hover::after {
   transition: transform 0.2s ease;
 }
 
-/* Animação de pulso quando adiciona um produto */
 .cart-badge.bump {
   animation: popBadge 0.3s ease;
 }
@@ -656,6 +913,7 @@ header nav a:hover::after {
   50% { transform: scale(1.4); }
   100% { transform: scale(1); }
 }
+
 /* ===== GAVETA DO CARRINHO (SIDEBAR) ===== */
 .cart-overlay {
   position: fixed;
@@ -741,7 +999,6 @@ header nav a:hover::after {
   font-size: 0.9rem;
 }
 
-/* Item dentro do Carrinho */
 .cart-item {
   display: flex;
   align-items: center;

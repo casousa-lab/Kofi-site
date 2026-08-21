@@ -1,16 +1,30 @@
 // ===== INCLUDES DE HEADER E FOOTER =====
+
 fetch('/header.html')
   .then(resposta => resposta.text())
   .then(html => {
     document.getElementById('header-placeholder').innerHTML = html;
+
+    // Só roda isso DEPOIS que o header já foi inserido na página
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
   });
+
+
+// ===== CARREGAR FOOTER =====
 
 fetch('/footer.html')
   .then(resposta => resposta.text())
   .then(html => {
     document.getElementById('footer-placeholder').innerHTML = html;
   });
-
 // ===== SOM SINTETIZADO (SEM ARQUIVO DE ÁUDIO) =====
 function playClickSound() {
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;

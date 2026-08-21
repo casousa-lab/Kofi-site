@@ -114,26 +114,87 @@
 </main>
   </main>
   <div id="footer-placeholder"></div>
-  <!-- Pop-up Modal de Detalhes do Produto -->
+<!-- Pop-up Modal de Detalhes do Produto -->
 <div id="product-modal" class="modal">
   <div class="modal-content">
     <button class="close-modal" id="close-modal" aria-label="Fechar Pop-up">&times;</button>
+    
     <div class="modal-body">
       <div class="modal-img">
         <img id="modal-img" src="" alt="Foto do Produto">
       </div>
+      
       <div class="modal-details">
         <h2 id="modal-title">Nome do Produto</h2>
         <span id="modal-price" class="modal-price">R$ 0,00</span>
         <p id="modal-desc">Descrição completa do produto aqui.</p>
-        
+
+        <!-- Área de Opções Personalizáveis -->
         <div class="modal-options">
-          <label>Quantidade:</label>
-          <div class="qty-selector">
-            <button id="qty-minus">-</button>
-            <span id="qty-value">1</span>
-            <button id="qty-plus">+</button>
+          
+          <!-- Grupo 1: Tipo de Leite -->
+          <div class="option-group">
+            <span class="option-title">Escolha o Leite</span>
+            <div class="option-choices">
+              <label class="option-pill">
+                <input type="radio" name="leite" value="integral" checked>
+                <span>Integral</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="leite" value="desnatado">
+                <span>Desnatado</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="leite" value="aveia">
+                <span>Leite de Aveia (+ R$ 4,00)</span>
+              </label>
+            </div>
           </div>
+
+          <!-- Grupo 2: Temperatura / Preparo -->
+          <div class="option-group">
+            <span class="option-title">Temperatura</span>
+            <div class="option-choices">
+              <label class="option-pill">
+                <input type="radio" name="temp" value="quente" checked>
+                <span>Quente</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="temp" value="gelado">
+                <span>Com Gelo</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Grupo 3: Adicionais -->
+          <div class="option-group">
+            <span class="option-title">Adicionais (Opcionais)</span>
+            <div class="option-choices">
+              <label class="option-pill">
+                <input type="checkbox" name="extra" value="baunilha">
+                <span>Xarope Baunilha (+ R$ 3,00)</span>
+              </label>
+              <label class="option-pill">
+                <input type="checkbox" name="extra" value="caramelo">
+                <span>Xarope Caramelo (+ R$ 3,00)</span>
+              </label>
+              <label class="option-pill">
+                <input type="checkbox" name="extra" value="shot_extra">
+                <span>Shot Extra Espresso (+ R$ 4,00)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Grupo 4: Quantidade -->
+          <div class="option-group qty-group">
+            <span class="option-title">Quantidade</span>
+            <div class="qty-selector">
+              <button id="qty-minus">-</button>
+              <span id="qty-value">1</span>
+              <button id="qty-plus">+</button>
+            </div>
+          </div>
+
         </div>
 
         <button class="btn-confirm-add" id="btn-confirm-add">Adicionar ao Pedido</button>
