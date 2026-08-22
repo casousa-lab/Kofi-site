@@ -528,7 +528,7 @@ header.scrolled .logo-icon {
   display: none;
 }
 
-/* ===== POP-UP MODAL ===== */
+/* ===== POP-UP MODAL (FUNDO BRANCO E VERTICAL) ===== */
 .modal {
   display: none;
   position: fixed;
@@ -536,7 +536,8 @@ header.scrolled .logo-icon {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   z-index: 2000;
   justify-content: center;
   align-items: center;
@@ -548,329 +549,224 @@ header.scrolled .logo-icon {
 }
 
 .modal-content {
-  background-color: #181818;
-  color: var(--branco);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  max-width: 650px;
+  background-color: var(--branco);
+  color: var(--preto);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 480px; /* Largura reduzida para formato vertical elegante */
   width: 100%;
+  max-height: 90vh;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   animation: modalFade 0.3s ease;
-}
-
-@keyframes modalFade {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .close-modal {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
+  top: 12px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  color: #a0a0a0;
-  font-size: 2rem;
+  color: var(--preto);
+  font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
-  transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .close-modal:hover {
-  color: var(--branco);
+  background-color: #e0e0e0;
 }
 
+/* Layout Vertical */
 .modal-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .modal-img {
   width: 100%;
-  height: 100%;
-  background-color: #101010;
+  height: 240px;
+  background-color: #f0f0f0;
+  flex-shrink: 0;
 }
 
 .modal-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: 280px;
 }
 
 .modal-details {
-  padding: 30px 25px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .modal-details h2 {
-  font-size: 1.4rem;
-  color: var(--buff);
+  font-size: 1.3rem;
+  color: var(--chesnut);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .modal-price {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--branco);
-  margin-bottom: 15px;
+  color: var(--preto);
+  margin-bottom: 12px;
 }
 
 .modal-details p {
-  color: #a0a0a0;
-  font-size: 0.85rem;
+  color: #555555;
+  font-size: 0.88rem;
   line-height: 1.5;
   margin-bottom: 20px;
 }
 
+/* Grupos de Opções */
 .modal-options {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
 }
 
-.modal-options label {
-  font-size: 0.9rem;
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.option-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--chesnut);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.option-choices {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.option-pill {
+  width: 100%;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  background-color: transparent;
+}
+
+.option-pill input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.option-pill input:checked {
+  background-color: var(--preto);
+  border-color: var(--preto);
+  position: relative;
+}
+
+.option-pill input:checked::after {
+  content: "✓";
+  position: absolute;
   color: var(--branco);
+  font-size: 12px;
+  font-weight: 600;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.option-pill span {
+  color: var(--preto);
+  font-size: 0.9rem;
+}
+
+/* Seletor de Quantidade */
+.qty-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
 }
 
 .qty-selector {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .qty-selector button {
   background: none;
   border: none;
-  color: var(--branco);
-  padding: 6px 14px;
+  color: var(--preto);
+  padding: 6px 12px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .qty-selector button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #f0f0f0;
 }
 
 .qty-selector span {
   padding: 0 10px;
   font-weight: 600;
   font-size: 0.9rem;
+  color: var(--preto);
 }
 
+/* Botão Confirmar */
 .btn-confirm-add {
   background-color: var(--brown-sugar);
   color: var(--branco);
   border: none;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 14px;
+  border-radius: 4px;
   font-weight: 600;
   font-family: inherit;
   font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-top: 10px;
 }
 
 .btn-confirm-add:hover {
   background-color: var(--chesnut);
-}
-/* ===== AJUSTES DE TAMANHO E SCROLL DO MODAL ===== */
-.modal-content {
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-details {
-  overflow-y: auto;
-  max-height: 80vh;
-  padding: 25px;
-}
-
-/* ===== GRUPOS DE OPÇÕES DO PRODUTO ===== */
-.modal-options {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 25px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
-}
-
-.option-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.option-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--buff);
-}
-
-.option-choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-/* ===== OPÇÕES DO PRODUTO - ESTILO REFERÊNCIA ===== */
-
-.option-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  width: 100%;
-}
-
-.option-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--preto);
-  text-transform: none;
-  letter-spacing: 0;
-
-  margin-bottom: 0;
-}
-
-/* Lista de opções */
-.option-choices {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 0;
-}
-
-/* Cada opção */
-.option-pill {
-  width: 100%;
-  min-height: 58px;
-
-  display: flex;
-  align-items: center;
-
-  box-sizing: border-box;
-
-  cursor: pointer;
-
-  border-bottom: 1px solid #999;
-  background-color: transparent;
-
-  transition: background-color 0.2s ease;
-}
-
-/* Checkbox */
-.option-pill input {
-  appearance: none;
-  -webkit-appearance: none;
-
-  width: 20px;
-  height: 20px;
-
-  margin: 0 10px 0 0;
-
-  border: 1px solid #999;
-  border-radius: 3px;
-
-  background-color: transparent;
-
-  cursor: pointer;
-
-  flex-shrink: 0;
-}
-
-/* Checkbox selecionado */
-.option-pill input:checked {
-  background-color: var(--preto);
-  border-color: var(--preto);
-
-  position: relative;
-}
-
-/* Check */
-.option-pill input:checked::after {
-  content: "✓";
-
-  position: absolute;
-
-  color: var(--branco);
-  font-size: 13px;
-  font-weight: 600;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-}
-
-/* Texto da opção */
-.option-pill span {
-  flex: 1;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0;
-
-  color: var(--preto);
-
-  border: none;
-  border-radius: 0;
-  background: transparent;
-
-  font-size: 0.95rem;
-  font-weight: 400;
-
-  transition: none;
-}
-
-/* Remove o efeito de "pill" */
-.option-pill:hover span {
-  color: var(--preto);
-  border: none;
-}
-
-/* Quando passar o mouse */
-.option-pill:hover {
-  background-color: var(--branco);
-}
-
-/* Selecionado */
-.option-pill input:checked + span {
-  background-color: transparent;
-  color: var(--preto);
-  border: none;
-  font-weight: 400;
-}
-/* Alinhamento da linha de quantidade */
-.qty-group {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
 }
 @media (max-width: 600px) {
   .modal-body {
