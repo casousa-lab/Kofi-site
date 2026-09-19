@@ -33,17 +33,16 @@ p {
   top: 0;
   z-index: 1000;
 }
+
 /* Linha branca */
 header.scrolled::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-
   width: 100%;
   height: 1px;
   background-color: white;
-
   animation: linhaHeader 0.4s ease forwards;
 }
 
@@ -52,19 +51,18 @@ header.scrolled::after {
     transform: scaleX(0);
     transform-origin: left;
   }
-
   to {
     transform: scaleX(1);
     transform-origin: left;
   }
 }
+
 header {
   background-color: var(--preto);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-
 }
 
 header nav ul {
@@ -215,30 +213,51 @@ header.scrolled .logo-icon {
   }
 }
 
-/* ===== BOTÕES ===== */
+/* ===== BOTÕES (ESTILO BLOCKED COM SETA À DIREITA) ===== */
 .btn-outline {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: transparent;
-  color: var(--branco);
-  border: 2px solid var(--buff);
-  padding: 14px 28px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  justify-content: space-between;
+  gap: 24px;
+  background-color: var(--buff);
+  color: var(--preto);
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  border: none;
   cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Esconde o ícone antigo do HTML */
+.btn-outline .ph {
+  display: none;
+}
+
+/* Seta alinhada à direita */
+.btn-outline::after {
+  content: "→";
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s ease;
 }
 
 .btn-outline:hover {
-  background-color: var(--chesnut);
-  transform: translateY(-3px);
+  background-color: var(--brown-sugar);
+  color: var(--branco);
+  transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(194, 102, 59, 0.3);
+}
+
+.btn-outline:hover::after {
+  transform: translateX(4px);
 }
 
 .btn-outline:active {
@@ -392,12 +411,9 @@ header.scrolled .logo-icon {
   position: absolute;
   left: 0;
   bottom: 0;
-
   width: 0;
   height: 2px;
-
   background-color: var(--chesnut);
-
   transition: width 0.3s ease;
 }
 
@@ -467,7 +483,7 @@ header.scrolled .logo-icon {
 
 .card-info p {
   font-size: 0.85rem;
-  color:var(--preto);
+  color: var(--preto);
   line-height: 1.4;
   margin-bottom: 16px;
   flex-grow: 1;
@@ -478,11 +494,9 @@ header.scrolled .logo-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: auto;
-
   border-top: 1px solid var(--preto);
   border-bottom: 1px solid var(--preto);
 }
@@ -493,7 +507,7 @@ header.scrolled .logo-icon {
   color: var(--preto);
 }
 
-/* Botão estático com quadrado e sinal de + (sem nenhuma animação) */
+/* Botão estático com quadrado e sinal de + */
 .btn-add {
   background-color: rgba(7, 0, 0, 0.15);
   color: var(--preto);
@@ -509,12 +523,10 @@ header.scrolled .logo-icon {
   transition: none;
 }
 
-/* Oculta o ícone Phosphor do HTML */
 .btn-add .ph {
   display: none;
 }
 
-/* Sinal de + centralizado estático */
 .btn-add::after {
   content: "+";
   font-size: 1.1rem;
@@ -523,7 +535,7 @@ header.scrolled .logo-icon {
   line-height: 1;
   transition: none;
 }
-/* Animação para esconder/mostrar produtos */
+
 .menu-card.hidden {
   display: none;
 }
@@ -553,7 +565,7 @@ header.scrolled .logo-icon {
   color: var(--preto);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  max-width: 480px; /* Largura reduzida para formato vertical elegante */
+  max-width: 480px;
   width: 100%;
   max-height: 90vh;
   position: relative;
@@ -587,7 +599,6 @@ header.scrolled .logo-icon {
   background-color: #e0e0e0;
 }
 
-/* Layout Vertical */
 .modal-body {
   display: flex;
   flex-direction: column;
@@ -635,7 +646,6 @@ header.scrolled .logo-icon {
   margin-bottom: 20px;
 }
 
-/* Grupos de Opções */
 .modal-options {
   display: flex;
   flex-direction: column;
@@ -711,7 +721,6 @@ header.scrolled .logo-icon {
   font-size: 0.9rem;
 }
 
-/* Seletor de Quantidade */
 .qty-group {
   display: flex;
   flex-direction: row;
@@ -748,7 +757,6 @@ header.scrolled .logo-icon {
   color: var(--preto);
 }
 
-/* Botão Confirmar */
 .btn-confirm-add {
   background-color: var(--brown-sugar);
   color: var(--branco);
@@ -768,6 +776,7 @@ header.scrolled .logo-icon {
 .btn-confirm-add:hover {
   background-color: var(--chesnut);
 }
+
 @media (max-width: 600px) {
   .modal-body {
     grid-template-columns: 1fr;
@@ -1002,4 +1011,189 @@ header.scrolled .logo-icon {
 
 .btn-checkout:hover {
   background-color: var(--chesnut);
+}
+/* ===================================================
+   BANNER MARQUEE ANIMADO (KOFI - VERSÃO FINA)
+   =================================================== */
+
+/* Container Principal do Banner (Faixa Fina) */
+.marquee-banner {
+  width: 100%;
+  overflow: hidden;
+  background-color:var(--preto); /* Tom escuro estilo café */
+  color:var(--branco);            /* Off-white para o texto */
+  padding: 8px 0;            /* Espaçamento vertical reduzido para a faixa ficar fina */
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  user-select: none;
+}
+
+/* Trilho interno que desliza */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-roll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Pausa a animação quando passa o mouse */
+.marquee-banner:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Cada grupo de texto + ícone */
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;            /* Espaçamento entre texto e imagens */
+  padding-right: 2rem;  /* Distância para a próxima repetição */
+  white-space: nowrap;
+}
+
+/* Estilização do Texto */
+.marquee-text {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.95rem;    /* Tamanho de fonte compacto e legível */
+  font-weight: 100;
+  letter-spacing: 0.02em;
+}
+
+/* Estilização das Ilustrações (Proporcional à Faixa Fina) */
+.marquee-icon {
+  height: 42px;          /* Altura ajustada para manter o banner fino */
+  width: auto;
+  flex-shrink: 0;        /* Impede a imagem de amassar */
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+/* Leve destaque ao passar o mouse */
+.marquee-banner:hover .marquee-icon {
+  transform: scale(1.08);
+}
+
+/* Animação Contínua (Loop Infinito) */
+@keyframes marquee-roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===================================================
+   ESTILOS DA SECÇÃO SPLIT-SCREEN (ESTILO REFERÊNCIA)
+   =================================================== */
+
+.split-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 520px;
+  background-color: #fdfbf7; /* Fundo creme suave e elegante */
+}
+
+/* Colunas de 50% cada */
+.split-image-container,
+.split-content-container {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* Painel da Imagem */
+.split-image-container {
+  position: relative;
+}
+
+.split-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Preenche toda a área sem distorcer */
+  object-position: center;  /* Mantém a embalagem e os grãos focados[cite: 19] */
+  display: block;
+}
+
+/* Painel de Conteúdo */
+.split-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 3rem;
+}
+
+.split-content {
+  max-width: 440px;
+}
+
+/* Subtítulo (Eyebrow) */
+.split-eyebrow {
+  display: block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8c6d58;
+  margin-bottom: 0.75rem;
+}
+
+/* Título Principal */
+.split-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: #211c19;
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
+}
+
+/* Descrição */
+.split-description {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #5a4e46;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Botão em Pílula */
+.btn-pill {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background-color: #211c19;
+  color: #fdfbf7;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-pill:hover {
+  background-color: #3b322c;
+  transform: translateY(-2px);
+}
+
+/* Adaptação para Telemóveis / Ecrãs Pequenos */
+@media (max-width: 768px) {
+  .split-section {
+    flex-direction: column;
+  }
+  
+  .split-image-container {
+    height: 380px;
+  }
+  
+  .split-content-container {
+    padding: 3rem 1.5rem;
+  }
+  
+  .split-title {
+    font-size: 1.8rem;
+  }
 }
