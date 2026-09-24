@@ -15,10 +15,39 @@
 <body>
   <div id="header-placeholder"></div>
   <main>
-   
+    <section class="menu-hero">
+      <h1>Fale Conosco</h1>
+      <p>Dúvidas, elogios ou parcerias? Escreva para a Kofi</p>
+    </section>
+    <section class="container contact-wrap">
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field"><label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name">
+          <span class="error" data-error="nome"></span></div>
+        <div class="field"><label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+          <span class="error" data-error="email"></span></div>
+        <div class="field"><label for="assunto">Assunto</label>
+          <select id="assunto" name="assunto">
+            <option value="">Selecione...</option>
+            <option>Dúvida</option><option>Elogio ou sugestão</option><option>Parcerias</option><option>Outro</option>
+          </select>
+          <span class="error" data-error="assunto"></span></div>
+        <div class="field"><label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+          <span class="error" data-error="mensagem"></span></div>
+        <button type="submit" class="btn-pill">Enviar mensagem</button>
+        <p id="form-success" class="form-success" hidden>Mensagem enviada! Responderemos em breve.</p>
+      </form>
+      <aside class="contact-info">
+        <h2>Visite a Kofi</h2>
+        <p>Seg - Sex: 08h às 20h<br>Sáb - Dom: 09h às 18h</p>
+        <p>contato@koficoffee.com</p>
+      </aside>
+    </section>
   </main>
   <div id="footer-placeholder"></div>
-   <script src="script.js"></script>
+   <script src="js/script.js"></script>
 </body>
 
 </html>

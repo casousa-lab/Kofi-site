@@ -1197,3 +1197,73 @@ header.scrolled .logo-icon {
     font-size: 1.8rem;
   }
 }
+
+/* ===================================================
+   HOTSPOTS INTERATIVOS NO VÍDEO (HERO)
+   =================================================== */
+
+#hero {
+  position: relative; /* Garante que os pontos fiquem presos ao container do vídeo */
+}
+
+/* Áreas invisíveis onde o usuário passa o mouse */
+.video-hotspot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* Posição da Chávena (Ajuste top/left conforme o vídeo) */
+.hotspot-cup {
+  bottom: 22%;
+  left: 36%;
+  width: 130px;
+  height: 130px;
+}
+
+/* Posição do Grupo da Máquina */
+.hotspot-machine {
+  top: 20%;
+  left: 40%;
+  width: 140px;
+  height: 140px;
+}
+
+
+
+/* Animação ao passar o cursor (Hover) */
+.video-hotspot:hover .hotspot-illustration {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===== PÁGINAS INTERNAS (adicionado) ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+#manifesto { text-align: center; padding: 110px 5%; }
+.tagline { color: var(--brown-sugar); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 600; }
+#manifesto h2 { font-size: clamp(1.8rem, 4vw, 3rem); max-width: 800px; margin: 16px auto 0; color: var(--chesnut); }
+
+.grain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; padding-top: 50px; padding-bottom: 90px; }
+.grain-card { border: 1px solid rgba(145, 83, 54, 0.3); padding: 30px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.3s ease; }
+.grain-card:hover { transform: translateY(-4px); }
+.grain-card h2 { color: var(--chesnut); margin: 0; }
+.grain-card ul { padding-left: 18px; color: #555; font-size: 0.9rem; flex-grow: 1; }
+.grain-tag { color: var(--brown-sugar); text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 600; }
+.grain-card .btn-pill { align-self: flex-start; }
+
+.contact-wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; padding-top: 50px; padding-bottom: 90px; }
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: 600; font-size: 0.85rem; color: var(--chesnut); }
+.field input, .field select, .field textarea { font-family: inherit; font-size: 1rem; padding: 12px; border: 1px solid #ccc; border-radius: 2px; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--buff); border-color: var(--buff); }
+.field .invalid { border-color: #c0392b; }
+.error { color: #c0392b; font-size: 0.8rem; min-height: 1em; }
+.form-success { color: #2e7d32; font-weight: 600; }
+.contact-form .btn-pill { align-self: flex-start; border: none; cursor: pointer; }
+.contact-info h2 { color: var(--chesnut); }
+@media (max-width: 768px) { .contact-wrap { grid-template-columns: 1fr; } }

@@ -1,0 +1,9 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configurações de editor
+.vscode/
+
+# Node (caso adicione backend no futuro)
+node_modules/
