@@ -160,6 +160,28 @@ function initContact() {
   });
 }
 
+/* ---------- Menu hambúrguer (mobile) ---------- */
+function initMobileNav() {
+  const header = $('header');
+  const toggle = $('.menu-toggle');
+  if (!header || !toggle) return;
+  const icon = $('i', toggle);
+
+  const setOpen = open => {
+    header.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    icon.className = open ? 'ph ph-x' : 'ph ph-list';
+  };
+
+  toggle.addEventListener('click', () => setOpen(!header.classList.contains('menu-open')));
+  $$('header nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  $('.cart-link')?.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  document.addEventListener('click', e => { if (!header.contains(e.target)) setOpen(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 640) setOpen(false); });
+}
+
 /* ---------- Inicialização ---------- */
 document.addEventListener('DOMContentLoaded', async () => {
   await Promise.all([loadPart('header-placeholder', 'header.html'), loadPart('footer-placeholder', 'footer.html')]);
@@ -175,6 +197,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const count = cart.reduce((s, i) => s + i.qty, 0);
   if ($('#cart-count')) $('#cart-count').textContent = count;
 
+  initMobileNav();
   initMenu();
   initContact();
 });

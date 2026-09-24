@@ -1267,3 +1267,401 @@ header.scrolled .logo-icon {
 .contact-form .btn-pill { align-self: flex-start; border: none; cursor: pointer; }
 .contact-info h2 { color: var(--chesnut); }
 @media (max-width: 768px) { .contact-wrap { grid-template-columns: 1fr; } }
+
+/* ===================================================
+   AJUSTES DE RESPONSIVIDADE (TABLET E MOBILE)
+   Bloco adicionado ao final: nada acima foi alterado
+   e o layout de desktop (> 1024px) permanece igual.
+   =================================================== */
+
+.menu-toggle {
+  display: none;
+}
+
+/* ---------- TABLETS (até 1024px) ---------- */
+@media (max-width: 1024px) {
+  /* Usa a altura "dinâmica" para a barra do navegador não cortar elementos */
+  #hero {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .hero-content {
+    padding: 20px 60px;
+  }
+
+  .cart-overlay,
+  .cart-drawer {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .modal-content,
+  .modal-body {
+    max-height: 90vh;
+    max-height: 90dvh;
+  }
+}
+
+/* ---------- TABLETS PEQUENOS (até 900px) ---------- */
+@media (max-width: 900px) {
+  header nav ul {
+    gap: 20px;
+  }
+
+  header nav a {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-actions {
+    gap: 16px;
+  }
+
+  #manifesto {
+    padding: 80px 5%;
+  }
+
+  .contact-wrap {
+    gap: 30px;
+  }
+}
+
+/* ---------- TABLET RETRATO: rodapé em 2 colunas ---------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-grid {
+    gap: 28px;
+  }
+}
+
+/* ---------- MOBILE (até 768px) ---------- */
+@media (max-width: 768px) {
+  .split-image-container {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .split-content-container {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+    padding: 20px 24px;
+  }
+
+  .scroll-indicator {
+    bottom: 50px;
+  }
+
+  .main-footer {
+    padding: 40px 5% 20px;
+  }
+}
+
+/* ---------- MOBILE (até 640px) ---------- */
+@media (max-width: 640px) {
+  /* Cabeçalho em uma linha: logo à esquerda, ícones + hambúrguer à direita */
+  header {
+    position: relative;
+    padding: 10px 5%;
+    box-sizing: border-box;
+  }
+
+  header > a {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-full,
+  .logo-icon {
+    width: auto;
+    height: 36px;
+  }
+
+  .header-actions {
+    gap: 14px;
+  }
+
+  /* Botão hambúrguer */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: -8px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--branco);
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* Menu vira painel que desce abaixo do cabeçalho */
+  header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    background-color: var(--preto);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: max-height 0.3s ease, visibility 0s linear 0.3s;
+  }
+
+  header.menu-open nav {
+    max-height: 320px;
+    visibility: visible;
+    transition: max-height 0.3s ease, visibility 0s;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 5% 16px;
+  }
+
+  header nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  header nav li:last-child {
+    border-bottom: none;
+  }
+
+  header nav a {
+    display: block;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  header nav a::after {
+    display: none;
+  }
+
+  /* Área de toque maior nos ícones */
+  .icon-link {
+    min-width: 32px;
+    min-height: 32px;
+    justify-content: center;
+  }
+
+  /* Faixa de destaque mais compacta */
+  .marquee-group {
+    gap: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .marquee-text {
+    font-size: 0.85rem;
+  }
+
+  .marquee-icon {
+    height: 32px;
+  }
+
+  #manifesto {
+    padding: 60px 6%;
+  }
+
+  /* Páginas internas */
+  .menu-hero {
+    padding: 40px 20px 24px;
+  }
+
+  .menu-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .menu-hero p {
+    font-size: 0.92rem;
+  }
+
+  .grain-grid {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    gap: 20px;
+  }
+
+  .grain-card {
+    padding: 22px;
+  }
+
+  .contact-wrap {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .contact-wrap > * {
+    min-width: 0;
+  }
+
+  .contact-form .btn-pill {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* Cardápio */
+  .menu-section {
+    padding: 10px 5% 60px;
+  }
+
+  /* Filtros em uma linha rolável, fixos logo abaixo do cabeçalho */
+  .category-filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    top: 56px;
+    margin-bottom: 24px;
+    padding: 10px 0;
+  }
+
+  .category-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+
+  .menu-grid {
+    gap: 26px;
+  }
+
+  .card-img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .btn-add {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Pop-up de produto */
+  .modal {
+    padding: 12px;
+  }
+
+  .modal-img {
+    height: 200px;
+  }
+
+  .modal-details {
+    padding: 18px;
+  }
+
+  .close-modal {
+    width: 40px;
+    height: 40px;
+  }
+
+  .qty-selector button {
+    padding: 10px 16px;
+  }
+
+  .option-pill {
+    padding: 14px 0;
+  }
+}
+
+/* ---------- MOBILE PEQUENO (até 480px) ---------- */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 20px;
+  }
+
+  .btn-outline {
+    padding: 12px 16px;
+    gap: 18px;
+  }
+
+  .split-image-container {
+    height: 300px;
+  }
+
+  .split-content-container {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .split-title {
+    font-size: 1.6rem;
+  }
+
+  /* Carrinho ocupa a largura toda e cada item ganha uma segunda linha para os controles */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cart-items {
+    padding: 14px;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item-details {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .cart-item-actions {
+    flex: 0 0 100%;
+    justify-content: space-between;
+  }
+
+  .cart-item-qty {
+    padding: 4px 8px;
+    gap: 10px;
+  }
+
+  .cart-item-qty button {
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+
+  .btn-remove-item {
+    padding: 8px;
+    font-size: 1.2rem;
+  }
+
+  .close-cart-btn {
+    padding: 4px 8px;
+  }
+
+  .btn-checkout {
+    padding: 14px;
+  }
+}
+
+/* ---------- CELULAR NA HORIZONTAL (altura curta) ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero {
+    min-height: 320px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .modal-img {
+    height: 140px;
+  }
+}
